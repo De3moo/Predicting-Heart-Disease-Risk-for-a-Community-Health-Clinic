@@ -30,7 +30,7 @@ CATEGORICAL_OPTIONS = {
 }
 
 # Features
-FEATURES = ['HeartDisease', 'BMI', 'Smoking', 'AlcoholDrinking', 'Stroke', 'PhysicalHealth', 'MentalHealth', 'DiffWalking', 'Sex', 'AgeCategory', 'Race', 'Diabetic', 'PhysicalActivity', 'GenHealth', 'SleepTime', 'Asthma', 'KidneyDisease', 'SkinCancer']
+FEATURES = feature_columns
 
 # Helper: Predict risk
 def predict_risk(input_data_dict):
