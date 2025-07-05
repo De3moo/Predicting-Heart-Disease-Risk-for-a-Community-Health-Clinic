@@ -73,14 +73,10 @@ with st.form('risk_form'):
     for feat in FEATURES:
         if feat in CATEGORICAL_OPTIONS:
             options = CATEGORICAL_OPTIONS[feat]
-            default = options[0]
             user_input[feat] = st.selectbox(feat, options, index=0)
-        elif feat in ['BMI', 'PhysicalHealth', 'MentalHealth', 'SleepTime']:
-            # Numeric features
-            min_val, max_val = (0, 100) if feat != 'SleepTime' else (0, 24)
-            user_input[feat] = st.number_input(feat, min_value=float(min_val), max_value=float(max_val), value=0.0)
         else:
-            user_input[feat] = st.text_input(feat, '')
+            # Assume numeric for non-categorical features
+            user_input[feat] = st.number_input(feat, value=0.0)
     submitted = st.form_submit_button('Predict Risk')
 
 if submitted:
