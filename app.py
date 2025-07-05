@@ -52,11 +52,7 @@ def predict_risk(input_data_dict):
         X.append(val)
     X = np.array(X).reshape(1, -1)
     # Scale numeric features
-    # Find indices of numeric features
-    numeric_indices = [i for i, feat in enumerate(FEATURES) if feat not in label_encoders]
-    if numeric_indices:
-        X_numeric = X[:, numeric_indices]
-        X[:, numeric_indices] = scaler.transform(X_numeric)
+    X = scaler.transform(X)
     # Predict
     proba = model.predict_proba(X)[0]
     pred = np.argmax(proba)
